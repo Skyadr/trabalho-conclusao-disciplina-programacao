@@ -54,4 +54,5 @@ jobs:
         with:
           path: ./mochawesome-report
           name: Relatório de Testes Unitários
+          retention-days: 30
           
