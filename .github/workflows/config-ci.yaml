@@ -15,7 +15,7 @@ on:
 
   push:
     branches:
-      - master
+      - main
 
 #tarefas dentro da pipeline = jobs
 
