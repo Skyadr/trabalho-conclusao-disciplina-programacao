@@ -1,0 +1,57 @@
+# CI de Nível 01/02/03 - Trabalho Final - Configuração do CI
+
+# nome da pipeline
+name: 'N1 - N2 - N3 - Configuração CI - Trabalho Final'
+
+# gatilhos / triggers - regras de disparo
+# gatilho manual = workflow_dispatch
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    #Roda a cada 30 minutos
+    - cron: '*/30 * * * *'
+
+  push:
+    branches:
+      - master
+
+#tarefas dentro da pipeline = jobs
+
+jobs:
+  #nome do job
+  unidade:
+    # maquina onde o job vai rodar
+    runs-on: ubuntu-latest
+    #runs-on: [self-hosted, windows, x64]
+    # passos do job
+    steps:
+      # clone do projeto
+      - uses: actions/checkout@v4
+
+      # instalção do node
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+
+      # instalação do Yarn
+      - name: Instalando Yarn
+        run: npm install -g yarn
+
+      # instalação das dependências
+      - name: Instalando dependências
+        run: yarn
+
+      # execução dos testes
+      - name: Rodando testes unitários
+        run: yarn run test
+
+      # relatório de testes
+
+      - name: Salvando relatórios de testes
+        uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          path: ./mochawesome-report
+          name: Relatório de Testes Unitários
