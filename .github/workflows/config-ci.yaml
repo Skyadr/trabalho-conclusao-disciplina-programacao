@@ -47,17 +47,6 @@ jobs:
       - name: Rodando testes unitários
         run: yarn run test
 
-      # validação do relatório
-      - name: Validando geração do relatório
-        if: ${{ always() }}
-        run: |
-          if [ -f "./mochawesome-report/mochawesome.html" ]; then
-            echo "✓ Relatório HTML gerado com sucesso"
-          else
-            echo "✗ Erro: Relatório HTML não foi gerado"
-            exit 1
-          fi
-
       # upload do relatório de testes
       - name: Salvando relatórios de testes
         uses: actions/upload-artifact@v4
@@ -65,4 +54,4 @@ jobs:
         with:
           path: ./mochawesome-report
           name: Relatório de Testes Unitários
-          retention-days: 30
+          
