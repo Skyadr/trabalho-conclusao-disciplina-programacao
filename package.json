@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/ --reporter mochawesome"
+    "test": "mocha test/ --reporter mochawesome --reporter-options reportDir=./mochawesome-report,reportFilename=mochawesome.html,reportTitle='Relatório de Testes - Trabalho Final',overwrite=true"
   },
   "keywords": [],
   "author": "",

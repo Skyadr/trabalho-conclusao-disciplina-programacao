@@ -1,0 +1,10 @@
+{
+  "reportDir": "./mochawesome-report",
+  "reportFilename": "mochawesome.html",
+  "reportTitle": "Relatório de Testes - Trabalho Final",
+  "reportPageTitle": "Testes Unitários - Serviço de Pagamento",
+  "inlineAssets": true,
+  "json": true,
+  "overwrite": true,
+  "timestamp": "yyyy-mm-dd HH:MM:ss"
+}
